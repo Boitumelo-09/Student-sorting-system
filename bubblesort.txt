@@ -1,0 +1,23 @@
+Here is the arranged list of students along with their final marks
+______________
+Name: Garry
+Final Mark: 67%
+Grade: D
+______________
+Name: Fred
+Final Mark: 78%
+Grade: C
+______________
+Name: Dempy
+Final Mark: 98%
+Grade: A
+______________________
+Statistics
+
+Lowest mark: 67%
+Highest mark: 98%
+Top Student: Dempy
+Lowest Student: Garry
+Total marks: 243%
+Average Student: Fred
+Average mark: 81%

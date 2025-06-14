@@ -2,12 +2,16 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
+#include <fstream>
+
 void swapintegers(int *mark, int *mark2);
 void swapstrings(std::string *name, std::string *name2);
 void info();
 int main()
 {
-    std::ios::sync_with_stdio(false);
+    std::ios::sync_with_stdio(true);
+    std::fstream file("bubblesort.txt", std::ios::out | std::ios::app);
+
     int total = 0;
     system("cls");
     int n = 0;
@@ -23,7 +27,6 @@ int main()
     system("cls");
     while (true)
     {
-        /* system("cls"); */
         printf("1. Enter student marks\n");
         printf("2. Search For A Student\n");
         printf("3. Exit program\n");
@@ -70,49 +73,66 @@ int main()
             }
 
             printf("Here is the arranged list of students along with their final marks\n");
+            file << "Here is the arranged list of students along with their final marks\n";
             for (int i = 0; i < n; i++)
             {
                 printf("______________\nName: %s\nFinal Mark: %d% \n", names[i].c_str(), marks[i]);
+                file << "______________\nName: " << names[i] << "\nFinal Mark: " << marks[i] << "%\n";
                 total += marks[i];
                 if (marks[i] >= 90)
                 {
                     printf("Grade: A\n");
+                    file << "Grade: A\n";
                 }
                 else if (marks[i] >= 80)
                 {
                     printf("Grade: B\n");
+                    file << "Grade: B\n";
                 }
                 else if (marks[i] >= 70)
                 {
                     printf("Grade: C\n");
+                    file << "Grade: C\n";
                 }
                 else if (marks[i] >= 60)
                 {
                     printf("Grade: D\n");
+                    file << "Grade: D\n";
                 }
                 else
                 {
                     printf("Grade: F\n");
+                    file << "Grade: F\n";
                 }
             }
 
             float average = (float)total / n;
 
             printf("______________________\nStatistics\n\n");
+            file << "______________________\nStatistics\n\n";
 
             printf("Lowest mark:      %d%\n", marks[0]);
             printf("Highest mark:     %d%\n", marks[n - 1]);
             printf("Top Student:      %s\n", names[n - 1].c_str());
             printf("Lowest Student:   %s\n", names[0].c_str());
+            file << "Lowest mark: " << marks[0] << "%\n";
+            file << "Highest mark: " << marks[n - 1] << "%\n";
+            file << "Top Student: " << names[n - 1] << "\n";
+            file << "Lowest Student: " << names[0] << "\n";
+            printf("Total marks:      %d%\n", total);
+            file << "Total marks: " << total << "%\n";
             if (n % 2 == 0)
             {
                 printf("Average Students: %s , %s \n", names[(n / 2) - 1].c_str(), names[(n / 2)].c_str());
+                file << "Average Students: " << names[(n / 2) - 1] << " , " << names[(n / 2)] << "\n";
             }
             else
             {
                 printf("Average Student:  %s\n", names[n / 2].c_str());
+                file << "Average Student: " << names[n / 2] << "\n";
             }
             printf("Average mark:    %.2f%\n", average);
+            file << "Average mark: " << average << "%\n";
             system("pause");
             printf("\n\n\n");
             break;
